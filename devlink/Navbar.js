@@ -1,38 +1,28 @@
 "use client";
+import { useState } from "react";
 import React from "react";
-import { useEffect } from "react";
 import * as _Builtin from "./_Builtin";
 import * as _interactions from "./interactions";
 import * as _utils from "./utils";
 import _styles from "./Navbar.module.css";
 import { Link } from "react-scroll";
-// import dynamic from 'next/dynamic';
 
 const _interactionsData = JSON.parse(
   '{"events":{"e":{"id":"e","name":"","animationType":"preset","eventTypeId":"NAVBAR_OPEN","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-407"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"5069e43d-d005-6e78-53bf-40a7ccfa4550","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"5069e43d-d005-6e78-53bf-40a7ccfa4550","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1626227992075},"e-2":{"id":"e-2","name":"","animationType":"preset","eventTypeId":"NAVBAR_CLOSE","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-2","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-590"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"5069e43d-d005-6e78-53bf-40a7ccfa4550","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"5069e43d-d005-6e78-53bf-40a7ccfa4550","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1626227992075}},"actionLists":{"a":{"id":"a","title":"Navbar 1 menu [Close]","actionItemGroups":[{"actionItems":[{"id":"a-n","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"inOutQuint","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-middle","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a200389601"]},"widthValue":0,"widthUnit":"px","heightUnit":"PX","locked":false}},{"id":"a-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"inOutQuint","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-bottom","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895fc"]},"yValue":-8,"xUnit":"PX","yUnit":"px","zUnit":"PX"}},{"id":"a-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"inOutQuint","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-top","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895f2"]},"yValue":8,"xUnit":"PX","yUnit":"px","zUnit":"PX"}},{"id":"a-n-4","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"inOutQuint","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-top","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895f2"]},"zValue":-45,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-n-5","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"inOutQuint","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-bottom","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895fc"]},"zValue":45,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1626168378054},"a-2":{"id":"a-2","title":"Navbar 1 menu [Open]","actionItemGroups":[{"actionItems":[{"id":"a-2-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"inOutQuint","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-bottom","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895fc"]},"yValue":0,"xUnit":"PX","yUnit":"px","zUnit":"PX"}},{"id":"a-2-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"inOutQuint","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-top","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895f2"]},"yValue":0,"xUnit":"PX","yUnit":"px","zUnit":"PX"}},{"id":"a-2-n-3","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"inOutQuint","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-bottom","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895fc"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-2-n-4","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"inOutQuint","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-top","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a2003895f2"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-2-n-5","actionTypeId":"STYLE_SIZE","config":{"delay":400,"easing":"inOutQuint","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".menu-icon1_line-middle","selectorGuids":["e720a99d-de97-dcba-8d3d-e8a200389601"]},"widthValue":24,"widthUnit":"px","heightUnit":"PX","locked":false}}]}],"useFirstGroupAsInitialState":false,"createdOn":1626168766736}},"site":{"mediaQueries":[{"key":"main","min":992,"max":10000},{"key":"medium","min":768,"max":991},{"key":"small","min":480,"max":767},{"key":"tiny","min":0,"max":479}]}}'
 );
 
-
 export function Navbar({ as: _Component = _Builtin.NavbarWrapper }) {
   _interactions.useInteractions(_interactionsData, _styles);
-  useEffect(() => {
-    const menuButton = document.querySelector('.navbar1_menu-button');
-    const menu = document.querySelector('.navbar1_menu');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-      menu.classList.toggle('is-open');
-    };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    if (menuButton) {
-      menuButton.addEventListener('click', toggleMenu);
-    }
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-    return () => {
-      if (menuButton) {
-        menuButton.removeEventListener('click', toggleMenu);
-      }
-    };
-  }, []);
   return (
     <_Component
       className={_utils.cx(_styles, "navbar1_component")}
@@ -79,21 +69,22 @@ export function Navbar({ as: _Component = _Builtin.NavbarWrapper }) {
           )}
           tag="nav"
           role="navigation"
+          style={{ display: isMenuOpen ? 'block' : 'none' }}
         >
           <button>
-          <Link to="section1" activeClass="active" spy={true} smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
+            <Link to="section1" onClick={closeMenu} activeClass="active" spy={true} smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
               {"Market"}
-          </Link>
+            </Link>
           </button>
           <button>
-          <Link to="section2" activeClass="active" spy={true} smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
-            {"Choose Us"}
-          </Link>
+            <Link to="section2" onClick={closeMenu} activeClass="active" spy={true} smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
+              {"Choose Us"}
+            </Link>
           </button>
           <button>
-          <Link to="section3" activeClass="active" spy={true}smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
-            {"Join Us"}
-          </Link>
+            <Link to="section3" onClick={closeMenu} activeClass="active" spy={true} smooth={true} duration={500} className={_utils.cx(_styles, "navbar1_link", "mobfont")}>
+              {"Join Us"}
+            </Link>
           </button>
         </_Builtin.NavbarMenu>
         <_Builtin.Block className={_utils.cx(_styles, "tabicon")} tag="div">
@@ -117,9 +108,10 @@ export function Navbar({ as: _Component = _Builtin.NavbarWrapper }) {
         <_Builtin.NavbarButton
           className={_utils.cx(_styles, "navbar1_menu-button")}
           tag="div"
+          onClick={toggleMenu}
         >
           <_Builtin.Block
-            className={_utils.cx(_styles, "menu-icon1", "mob")}
+            className={_utils.cx(_styles, "menu-icon1", "mob") }
             tag="div"
           >
             <_Builtin.Block

@@ -204,14 +204,20 @@
 
 @media screen and (max-width: 991px) {
   .image-10.home_features-list_tabs-menu {
+    display: block;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media screen and (max-width: 767px) {
   .image-10.home_features-list_tabs-menu.landimg {
+    display: block;
     width: 50%;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

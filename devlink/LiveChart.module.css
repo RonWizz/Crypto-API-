@@ -50,3 +50,18 @@
   -webkit-text-fill-color: transparent;
   margin-bottom: 80px;
 }
+@media screen and (max-width: 767px) {
+  .heading-12 {
+    font-size: 20px;
+  }
+}
+
+.chart{
+  margin-left: 70px;
+}
+
+@media screen and (max-width: 991px) {
+  .chart {
+    width: 30%;
+  }
+}

@@ -105,7 +105,7 @@ export function Discord({ as: _Component = _Builtin.Block }) {
             className={_utils.cx(_styles, "link-text", "tab-btn", "land-btn")}
             tag="div"
           >
-            {"Hello world"}
+            {"Join Discord"}
           </_Builtin.Block>
           <_Builtin.Block
             className={_utils.cx(_styles, "arrow", "tab", "land")}
